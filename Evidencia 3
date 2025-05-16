@@ -1,0 +1,81 @@
+"""
+MÉTODO DE BISECÓN 
+
+Descripción: Encuentra raíces de una función predefinida f(x) = 0
+
+"""
+
+# Función predefinida 
+def f(x):
+    return x**3 - 2*x - 5  # Ejemplo: x³ - 2x - 5 = 0
+
+def ingresar_numero(mensaje):
+    """Solicita un número al usuario con validación"""
+    while True:
+        try:
+            return float(input(mensaje))
+        except:
+            print("Error! Ingrese un número válido.")
+
+def metodo_biseccion(f, a, b, tolerancia, max_iter):
+    """
+    Implementa el método de bisección para encontrar una raíz de f(x) = 0
+    """
+    if f(a) * f(b) >= 0:
+        raise ValueError("La función no cambia de signo en el intervalo dado")
+    
+    iteracion = 0
+    historial = []
+    
+    while iteracion < max_iter:
+        c = (a + b) / 2
+        historial.append(c)
+        
+        if abs(f(c)) < tolerancia:
+            return c, iteracion + 1, historial
+        
+        if f(a) * f(c) < 0:
+            b = c
+        else:
+            a = c
+            
+        iteracion += 1
+    
+    raise ValueError(f"No se alcanzó convergencia en {max_iter} iteraciones")
+
+def main():
+    print("\nMÉTODO DE BISECCIÓN SIMPLIFICADO")
+    print("Función actual: f(x) = x³ - 2x - 5")  # Cambiar según la función definida
+    print("----------------------------------")
+    
+    # Ingresar parámetros
+    print("\nINGRESE LOS PARÁMETROS:")
+    a = ingresar_numero("intervalo a: ")
+    b = ingresar_numero("intervalo b: ")
+    tol = ingresar_numero("Tolerancia: ")
+    max_iter = int(ingresar_numero("Máximo de iteraciones: "))
+    
+    # Aplicar el método
+    try:
+        print("\nCALCULANDO...")
+        raiz, iteraciones, historial = metodo_biseccion(f, a, b, tol, max_iter)
+        
+        # Mostrar resultados
+        print("\nRESULTADOS:")
+        print(f"Raíz aproximada: {raiz:.8f}")
+        print(f"Iteraciones realizadas: {iteraciones}")
+        
+        # Opción para ver historial
+        if input("\n¿Mostrar todas las iteraciones? (s/n): ").lower() == 's':
+            print("\nHISTORIAL DE APROXIMACIONES:")
+            for i, valor in enumerate(historial, 1):
+                print(f"Iteración {i:2d}: {valor:.8f}")
+                
+    except ValueError as e:
+        print(f"\nERROR: {e}")
+        print("Posibles soluciones:")
+        print("- Verifique que f(a) y f(b) tengan signos opuestos")
+        print("- Aumente el número máximo de iteraciones")
+
+if __name__ == "__main__":
+    main()
