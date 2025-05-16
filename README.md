@@ -9,9 +9,13 @@ El método de bisección es un algoritmo de búsqueda de raíces que divide repe
 Características
 
 -Función predefinida: f(x) = x³ - 2x - 5 (modificable en el código)
+
 -Entrada de parámetros con validación
+
 -Cálculo automático con criterio de parada por tolerancia o máximo de iteraciones
+
 -Visualización de resultados e historial de aproximaciones
+
 -Manejo de errores con sugerencias para solucionarlos
 
 
