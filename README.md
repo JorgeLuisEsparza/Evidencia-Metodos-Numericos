@@ -1,4 +1,5 @@
 Método de Bisección para Encontrar Raíces
+
 Este programa implementa el método de bisección para encontrar aproximaciones de raíces de una función predefinida f(x) = 0.
 
 Descripción
