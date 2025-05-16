@@ -70,5 +70,6 @@ Verifique que f(a) y f(b) tengan signos opuestos
 Aumente el número máximo de iteraciones
 Amplíe el intervalo de búsqueda
 
-Autor
+Autor:
+
 Este programa fue desarrollado por Jorge Luis Esparza Acosta para la materia de Métodos numéricos
